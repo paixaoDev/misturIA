@@ -65,6 +65,11 @@ dependencies {
     implementation(libs.androidx.navigation)
     implementation(libs.squareup.retrofit)
     implementation(libs.squareup.gson)
+    implementation (libs.androidx.room.runtime)
+    implementation (libs.androidx.room.ktx)
+    implementation("io.coil-kt.coil3:coil-compose:3.0.0")
+    implementation("io.coil-kt.coil3:coil-network-okhttp:3.0.0")
+
 
     implementation(libs.google.gemini)
 

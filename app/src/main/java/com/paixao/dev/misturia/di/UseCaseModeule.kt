@@ -4,7 +4,7 @@ import com.paixao.dev.misturia.domain.repository.GeminiRepository
 import com.paixao.dev.misturia.domain.usecase.RequestRecipeToGeminiUseCase
 import org.koin.dsl.module
 
-fun provideRequestRecipeToGeminiUseCase(
+private fun provideRequestRecipeToGeminiUseCase(
     repository: GeminiRepository
 ): RequestRecipeToGeminiUseCase {
     return RequestRecipeToGeminiUseCase(repository)

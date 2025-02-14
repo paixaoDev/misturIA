@@ -6,6 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.paixao.dev.misturia.presentation.screens.HomeScreen
+import com.paixao.dev.misturia.presentation.screens.IngredientConfigScreen
 
 @Composable
 fun MisturIaApp() {
@@ -22,7 +23,7 @@ fun MisturIaNavHost(
             HomeScreen()
         }
         composable("list") {
-
+            IngredientConfigScreen()
         }
     }
 }

@@ -19,7 +19,7 @@ import com.paixao.dev.misturia.R
 
 @Composable
 fun IngredientListItem(
-    ingredientTypePainter: Painter = painterResource(id = R.drawable.ic_launcher_foreground),
+    ingredientTypePainter: Painter = painterResource(id = R.drawable.ic_launcher_background),
     ingredientName: String = "",
     isEditable: Boolean = false,
 ) {
@@ -87,7 +87,7 @@ fun IngredientListItemPreview() {
     MaterialTheme {
         IngredientListItem(
             ingredientTypePainter = painterResource(id = R.drawable.ic_launcher_background),
-            ingredientName = "Ingredient",
+            ingredientName = "",
             isEditable = true
         )
     }
