@@ -21,11 +21,11 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-enum class Chefs (val prompt: String){
-    Vozinha ("Você é um vó que esta fazendo uma receita para seu netinho"),
+enum class Chefs(val prompt: String) {
+    Vozinha("Você é um vó que esta fazendo uma receita para seu netinho"),
     Michelan("Você é um chef de cozinha criativo e especializado em criar receitas saborosas."),
     Cozinheiro("Você é um cozinheiro que faz receitas do dia a dia"),
-    Caseiro ("Você é uma pessoa comum que buscar fazer receitas simples")
+    Caseiro("Você é uma pessoa comum que buscar fazer receitas simples")
 }
 
 class HomeViewModel(
@@ -36,7 +36,8 @@ class HomeViewModel(
     private val _state = MutableStateFlow(HomeScreenState())
     val state: StateFlow<HomeScreenState> = _state
 
-    fun generateRecipe(chef: Chefs = Chefs.Vozinha) {
+    fun generateRecipe(chef: Chefs = Chefs.Michelan) {
+        loading()
         viewModelScope.launch {
             requestRecipeToGeminiUseCase.invoke(chef.prompt)
                 .flowOn(coroutineDispatcher)
@@ -44,10 +45,17 @@ class HomeViewModel(
                 .catch { }
                 .collect { receipt ->
                     _state.value = _state.value.copy(
+                        isLoading = false,
                         receipt = receipt
                     )
                 }
         }
+    }
+
+    fun loading() {
+        _state.value = _state.value.copy(
+            isLoading = true
+        )
     }
 
     fun onConfigClick() {

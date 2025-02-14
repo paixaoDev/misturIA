@@ -1,6 +1,8 @@
 package com.paixao.dev.misturia
 
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
@@ -18,7 +20,11 @@ fun MisturIaApp() {
 fun MisturIaNavHost(
     navController: NavHostController
 ) {
-    NavHost(navController = navController, startDestination = "home") {
+    NavHost(
+        modifier = Modifier.fillMaxSize(),
+        navController = navController,
+        startDestination = "home"
+    ) {
         composable("home") {
             HomeScreen()
         }

@@ -34,7 +34,8 @@ import com.paixao.dev.misturia.ui.theme.timmana
 fun AppName(
     textStyle: TextStyle = MaterialTheme.typography.headlineSmall,
     shinyTextColor: Color = MaterialTheme.colorScheme.tertiary,
-    shinyColor: Color = MaterialTheme.colorScheme.tertiary
+    shinyColor: Color = MaterialTheme.colorScheme.tertiary,
+    animate: Boolean = true
 ) {
     Row(
         verticalAlignment = Alignment.Bottom
@@ -48,6 +49,7 @@ fun AppName(
             textStyle = textStyle,
             shinyTextColor = shinyTextColor,
             shinyColor = shinyColor,
+            animate = animate
         )
     }
 }
@@ -57,6 +59,7 @@ private fun AppNameCompose(
     textStyle: TextStyle,
     shinyTextColor: Color,
     shinyColor: Color,
+    animate: Boolean
 ) {
     Box {
         Text(
@@ -66,7 +69,7 @@ private fun AppNameCompose(
         )
 
         val shinyColors = listOf(
-            Color.Magenta .copy(alpha = 0.6f),
+            Color.Magenta.copy(alpha = 0.6f),
             shinyColor.copy(alpha = 0.0f),
             Color.White.copy(alpha = 0.6f),
             shinyColor.copy(alpha = 0.0f),
@@ -92,7 +95,10 @@ private fun AppNameCompose(
         val brush = Brush.linearGradient(
             colors = shinyColors,
             start = Offset.Zero,
-            end = Offset(x = translateAnim.value, y = translateAnim.value)
+            end = Offset(
+                x = if (animate) translateAnim.value else 600f,
+                y = if (animate) translateAnim.value else 620f
+            )
         )
 
         Text(
@@ -124,6 +130,6 @@ private fun AppNameCompose(
 @Composable
 private fun TitleValuationPreview() {
     MisturIATheme {
-        AppName()
+        AppName(animate = false)
     }
 }

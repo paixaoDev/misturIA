@@ -15,6 +15,7 @@ class GeminiRepositoryImpl : GeminiRepository {
             modelName = "gemini-1.5-flash",
             apiKey = BuildConfig.GEMINI_KEY,
             generationConfig = generationConfig {
+                responseMimeType = "application/json"
                 temperature = 0.7f // Ajuste para mais criatividade
             },
             safetySettings = listOf(
@@ -33,8 +34,8 @@ class GeminiRepositoryImpl : GeminiRepository {
             {
                 "name": "Nome da receita",
                 "description": "Descrição com 220 caracteres",
-                "image": "URL de imagem vertical, sendo uma url publica do google",
-                "receipt": "Instruções em HTML",
+                "image": "URL de imagem (opcional)
+                "receipt": "Instruções em HTML, incluir métodos de preparo, tempo de cozimento",
                 "tags": ["tag1", "tag2"]
             }
             Não inclua markdown. Use apenas HTML simples para 'receipt'.
