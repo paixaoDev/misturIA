@@ -8,7 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-fun provideRetrofit(
+private fun provideRetrofit(
     gsonConverterFactory: GsonConverterFactory
 ): Retrofit {
     return Retrofit.Builder()
@@ -17,7 +17,7 @@ fun provideRetrofit(
         .build()
 }
 
-fun provideConverterFactory(): GsonConverterFactory {
+private fun provideConverterFactory(): GsonConverterFactory {
     val gson = GsonBuilder()
         .setLenient()
         .create()
@@ -25,7 +25,7 @@ fun provideConverterFactory(): GsonConverterFactory {
 }
 
 
-fun provideService(retrofit: Retrofit): GeminiApi =
+private fun provideService(retrofit: Retrofit): GeminiApi =
     retrofit.create(GeminiApi::class.java)
 
 val networkModule = module {
