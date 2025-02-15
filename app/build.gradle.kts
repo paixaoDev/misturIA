@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -19,7 +21,10 @@ android {
             useSupportLibrary = true
         }
 
-        buildConfigField("String","GEMINI_KEY", "\"AIzaSyCQHqsi2in0FQ18N7T_hFsz_XlT6Ign1IQ\"")
+        val properties = Properties()
+        properties.load(project.rootProject.file("local.properties").reader())
+        val geminiKey: String = properties.getProperty("gemini.api.key")
+        buildConfigField("String", "GEMINI_KEY", geminiKey)
     }
 
     buildTypes {
